@@ -2,12 +2,33 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   margin: 0;
   background: #0f172a;
   color: #e5e7eb;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root,
+#toast-root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 @keyframes fadeInScale {
@@ -1003,36 +1024,18 @@ button:disabled {
   display: none;
 }
 
-@media (max-width: 980px) {
-  .app-shell {
-    grid-template-columns: 1fr;
-  }
+/* ═════════════════════════════════════════════════════════════════ */
+/* RESPONSIVE BREAKPOINTS - Mobile First Approach                     */
+/* ═════════════════════════════════════════════════════════════════ */
 
-  .sidebar {
-    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
-    grid-template-rows: auto;
-  }
+/* ──────────────────────────────────────────────────────────────── */
+/* DESKTOP: 1200px and above (default styles above)                  */
+/* ──────────────────────────────────────────────────────────────── */
 
-  .login-phone {
-    opacity: 0.22;
-  }
-
-  .pos-layout,
-  .dashboard-grid,
-  .split-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .cart-panel {
-    min-height: 640px;
-  }
-}
-
-@media (max-width: 1180px) {
+/* ──────────────────────────────────────────────────────────────── */
+/* TABLETS & SMALL LAPTOPS: 768px - 1199px                           */
+/* ──────────────────────────────────────────────────────────────── */
+@media (max-width: 1199px) {
   .login-phone-left {
     left: -10%;
     width: min(50vw, 600px);
@@ -1041,6 +1044,1825 @@ button:disabled {
   .login-phone-right {
     right: -12%;
     width: min(55vw, 700px);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .pos-layout {
+    grid-template-columns: minmax(0, 1fr) 350px;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cat-admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-list {
+    max-height: 250px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* TABLETS: 768px - 1024px                                           */
+/* ──────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    grid-template-rows: auto;
+    grid-auto-rows: min-content;
+    border-right: none;
+    border-bottom: 1px solid #243244;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .shop-title {
+    grid-column: 1;
+    padding: 6px 0 8px;
+  }
+
+  .sidebar button {
+    font-size: 11px;
+    min-height: 48px;
+  }
+
+  .workspace {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .topbar strong {
+    font-size: 20px;
+  }
+
+  .topbar span {
+    font-size: 13px;
+  }
+
+  .pos-layout {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cart-panel {
+    min-height: auto;
+    max-height: 50vh;
+    grid-template-rows: auto 1fr auto auto auto auto;
+  }
+
+  .product-grid {
+    grid-auto-rows: 140px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .search-box {
+    flex-wrap: wrap;
+  }
+
+  .search-box input {
+    min-height: 38px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-card strong {
+    font-size: 16px;
+  }
+
+  .product-icon {
+    height: 36px;
+    width: 36px;
+  }
+
+  .category-icon {
+    height: 56px;
+    width: 56px;
+  }
+
+  .category-name {
+    font-size: 16px;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .metric {
+    padding: 14px;
+  }
+
+  .metric strong {
+    font-size: 24px;
+  }
+
+  .topbar-logout-btn,
+  .topbar-refresh-btn {
+    padding: 6px;
+  }
+
+  .qty-controls button {
+    height: 28px;
+    width: 28px;
+    font-size: 12px;
+  }
+
+  .customer-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .checkout-options {
+    grid-template-columns: 1fr;
+  }
+
+  .login-panel {
+    max-width: 100%;
+    width: 100%;
+    padding: 24px;
+  }
+
+  .login-panel h1 {
+    font-size: 24px;
+  }
+
+  .login-panel p {
+    font-size: 13px;
+  }
+
+  .brand-mark {
+    height: 64px;
+    width: 64px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* LANDSCAPE TABLETS: 768px - 1024px                                 */
+/* ──────────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) and (orientation: landscape) {
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .workspace {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .cart-panel {
+    max-height: 70vh;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* SMALL TABLETS & LARGE PHONES: 600px - 767px                      */
+/* ──────────────────────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  html, body, #root, #toast-root {
+    font-size: 14px;
+  }
+
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+
+  .sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    border-bottom: 1px solid #243244;
+    border-right: none;
+    padding: 8px;
+    gap: 6px;
+    grid-auto-rows: min-content;
+    order: 2;
+  }
+
+  .shop-title {
+    display: none;
+  }
+
+  .sidebar button {
+    font-size: 10px;
+    min-height: 44px;
+    padding: 6px;
+  }
+
+  .workspace {
+    padding: 10px;
+    gap: 8px;
+    order: 3;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .topbar div:first-child {
+    width: 100%;
+  }
+
+  .topbar strong {
+    font-size: 18px;
+  }
+
+  .topbar span {
+    font-size: 12px;
+  }
+
+  .topbar-logout-btn,
+  .topbar-refresh-btn {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .pos-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .catalog {
+    padding: 10px;
+    gap: 4px;
+  }
+
+  .product-grid {
+    grid-auto-rows: 130px;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .product-card {
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .product-card strong {
+    font-size: 14px;
+  }
+
+  .product-card small {
+    font-size: 11px;
+  }
+
+  .product-icon {
+    height: 32px;
+    width: 32px;
+  }
+
+  .product-category {
+    font-size: 10px;
+  }
+
+  .search-box {
+    gap: 6px;
+    padding: 0 10px;
+    min-height: 36px;
+  }
+
+  .search-box input {
+    min-height: 36px;
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .search-box button {
+    padding: 4px;
+    min-height: 32px;
+  }
+
+  .category-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .category-icon {
+    height: 48px;
+    width: 48px;
+  }
+
+  .category-name {
+    font-size: 14px;
+  }
+
+  .cart-panel {
+    padding: 8px;
+    gap: 6px;
+    min-height: auto;
+    max-height: 45vh;
+    grid-template-rows: auto 1fr auto auto auto auto;
+  }
+
+  .cart-list {
+    gap: 8px;
+  }
+
+  .cart-row {
+    padding: 8px;
+    gap: 6px;
+    border-radius: 6px;
+  }
+
+  .cart-row-top {
+    gap: 8px;
+  }
+
+  .cart-row-extras {
+    grid-template-columns: 100px 1fr;
+    gap: 4px;
+  }
+
+  .cart-extra-input {
+    font-size: 11px;
+    padding: 4px 6px;
+    min-height: 32px;
+  }
+
+  .qty-controls {
+    gap: 4px;
+  }
+
+  .qty-controls button {
+    height: 26px;
+    width: 26px;
+    font-size: 11px;
+  }
+
+  .qty-controls span {
+    min-width: 18px;
+    font-size: 12px;
+  }
+
+  .customer-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .customer-grid input {
+    min-height: 38px;
+    font-size: 12px;
+  }
+
+  .checkout-options {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .checkout-options select {
+    min-height: 38px;
+    font-size: 12px;
+  }
+
+  .primary-button,
+  .charge-button {
+    min-height: 40px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .primary-button svg,
+  .charge-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .secondary-button {
+    min-height: 40px;
+    font-size: 13px;
+  }
+
+  .totals {
+    font-size: 12px;
+    padding-top: 10px;
+    gap: 6px;
+  }
+
+  .totals div {
+    font-size: 11px;
+  }
+
+  .grand-total {
+    font-size: 20px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .metric {
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .metric strong {
+    font-size: 20px;
+  }
+
+  .metric span {
+    font-size: 12px;
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(60px, 1fr));
+    gap: 8px;
+  }
+
+  .form-grid input,
+  .form-grid select {
+    min-height: 36px;
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .form-grid .primary-button {
+    min-width: auto;
+  }
+
+  .report-controls {
+    gap: 8px;
+  }
+
+  .report-controls input {
+    min-height: 36px;
+    font-size: 12px;
+  }
+
+  .report-controls button {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .inventory-table {
+    overflow-x: auto;
+  }
+
+  .table-head,
+  .stock-row {
+    grid-template-columns: 1.5fr 1fr 0.8fr;
+    padding: 10px 12px;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .table-head {
+    font-weight: 700;
+  }
+
+  .stock-row,
+  .data-row {
+    font-size: 12px;
+  }
+
+  .row-actions {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .row-actions button,
+  .data-row button {
+    min-height: 32px;
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .row-actions button svg,
+  .data-row button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .history-card {
+    padding: 10px;
+    gap: 4px;
+  }
+
+  .history-card span,
+  .history-card small {
+    font-size: 12px;
+  }
+
+  .cat-admin-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cat-panel {
+    min-height: auto;
+  }
+
+  .cat-panel-header {
+    padding: 4px 0 6px;
+    font-size: 13px;
+  }
+
+  .cat-add-form {
+    gap: 6px;
+  }
+
+  .cat-add-form input {
+    min-height: 36px;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .cat-add-form .primary-button {
+    min-height: 36px;
+    padding: 6px 10px;
+  }
+
+  .cat-list {
+    max-height: 300px;
+    gap: 3px;
+  }
+
+  .cat-item {
+    padding: 8px 10px;
+    border-radius: 4px;
+  }
+
+  .cat-item-name {
+    font-size: 13px;
+  }
+
+  .cat-child-count {
+    font-size: 11px;
+  }
+
+  .cat-delete-btn {
+    padding: 3px;
+  }
+
+  .cat-move-dropdown {
+    padding: 6px;
+    gap: 3px;
+    margin-top: 4px;
+  }
+
+  .cat-move-option {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .content-panel {
+    padding: 12px;
+  }
+
+  .chart-panel {
+    padding: 12px;
+  }
+
+  .back-category-btn {
+    font-size: 13px;
+  }
+
+  .login-panel {
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .login-panel h1 {
+    font-size: 22px;
+  }
+
+  .login-panel p {
+    font-size: 12px;
+  }
+
+  .login-panel label {
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .login-panel input {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .brand-mark {
+    height: 60px;
+    width: 60px;
+  }
+
+  .login-phone {
+    opacity: 0.15;
+  }
+
+  .login-phone-left {
+    left: -15%;
+    width: min(45vw, 400px);
+  }
+
+  .login-phone-right {
+    right: -15%;
+    width: min(45vw, 400px);
+  }
+
+  .empty-cart {
+    min-height: 100px;
+  }
+
+  .preview-modal-overlay {
+    padding: 20px;
+  }
+
+  .preview-modal-content {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .preview-modal-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* PHONES: 480px - 599px                                             */
+/* ──────────────────────────────────────────────────────────────── */
+@media (max-width: 599px) {
+  html, body, #root, #toast-root {
+    font-size: 13px;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+
+  .sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .sidebar button {
+    font-size: 9px;
+    min-height: 42px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .sidebar button svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .workspace {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .topbar {
+    gap: 6px;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .topbar div:first-child {
+    width: 100%;
+  }
+
+  .topbar strong {
+    font-size: 16px;
+  }
+
+  .topbar span {
+    font-size: 11px;
+  }
+
+  .status-pill {
+    padding: 6px 10px;
+    font-size: 11px;
+    align-self: flex-start;
+  }
+
+  .topbar-logout-btn,
+  .topbar-refresh-btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .topbar-logout-btn svg,
+  .topbar-refresh-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .pos-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .catalog {
+    padding: 8px;
+    gap: 3px;
+  }
+
+  .search-box {
+    gap: 4px;
+    padding: 0 8px;
+    min-height: 34px;
+  }
+
+  .search-box input {
+    min-height: 34px;
+    padding: 5px 6px;
+    font-size: 11px;
+  }
+
+  .search-box button {
+    min-height: 30px;
+    width: 30px;
+    padding: 3px;
+  }
+
+  .search-box button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .product-grid {
+    grid-auto-rows: 120px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 6px;
+  }
+
+  .product-card {
+    padding: 8px;
+    border-radius: 4px;
+  }
+
+  .product-card-top {
+    gap: 6px;
+  }
+
+  .product-card strong {
+    font-size: 13px;
+  }
+
+  .product-card small {
+    font-size: 10px;
+  }
+
+  .product-icon {
+    height: 28px;
+    width: 28px;
+  }
+
+  .product-category {
+    font-size: 9px;
+  }
+
+  .category-card {
+    padding: 12px;
+    gap: 10px;
+    border-radius: 6px;
+  }
+
+  .category-icon {
+    height: 44px;
+    width: 44px;
+  }
+
+  .category-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .category-name {
+    font-size: 13px;
+  }
+
+  .category-sub-badge {
+    font-size: 9px;
+  }
+
+  .back-category-btn {
+    font-size: 12px;
+  }
+
+  .cart-panel {
+    padding: 6px;
+    gap: 4px;
+    max-height: 40vh;
+  }
+
+  .cart-panel > :first-child {
+    font-size: 13px;
+  }
+
+  .cart-list {
+    gap: 6px;
+  }
+
+  .cart-row {
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .cart-row-top {
+    gap: 6px;
+  }
+
+  .cart-row-name {
+    gap: 1px;
+  }
+
+  .cart-row-name strong {
+    font-size: 12px;
+  }
+
+  .cart-price-line {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .cart-row-extras {
+    grid-template-columns: 80px 1fr;
+    gap: 3px;
+  }
+
+  .cart-extra-input {
+    font-size: 10px;
+    padding: 3px 4px;
+    min-height: 30px;
+  }
+
+  .qty-controls {
+    gap: 3px;
+  }
+
+  .qty-controls button {
+    height: 24px;
+    width: 24px;
+    font-size: 10px;
+  }
+
+  .qty-controls button svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .qty-controls span {
+    min-width: 16px;
+    font-size: 11px;
+  }
+
+  .cart-row span {
+    font-size: 11px;
+  }
+
+  .customer-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .customer-grid label {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .customer-grid input {
+    min-height: 36px;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .checkout-options {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .checkout-options select {
+    min-height: 36px;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .totals {
+    font-size: 11px;
+    gap: 4px;
+    padding-top: 8px;
+    border-top: 1px solid #334155;
+  }
+
+  .totals div {
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .grand-total {
+    font-size: 18px;
+  }
+
+  .primary-button,
+  .charge-button,
+  .secondary-button {
+    min-height: 38px;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  .primary-button svg,
+  .charge-button svg,
+  .secondary-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .pos-action-btn {
+    min-height: 30px !important;
+    padding: 4px 8px !important;
+    font-size: 10px !important;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .metric {
+    padding: 10px;
+    gap: 4px;
+  }
+
+  .metric strong {
+    font-size: 18px;
+  }
+
+  .metric span {
+    font-size: 11px;
+  }
+
+  .chart-panel {
+    padding: 10px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .form-grid input,
+  .form-grid select {
+    min-height: 36px;
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .form-grid .primary-button {
+    width: 100%;
+  }
+
+  .report-controls {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .report-controls input {
+    width: 100%;
+    min-height: 36px;
+    font-size: 11px;
+  }
+
+  .report-controls button {
+    width: 100%;
+    min-height: 36px;
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .report-controls .secondary-button {
+    width: 100%;
+  }
+
+  .inventory-table {
+    overflow-x: auto;
+    border-radius: 4px;
+  }
+
+  .table-head,
+  .stock-row,
+  .data-head,
+  .data-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .table-head {
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .stock-row,
+  .data-row {
+    border-top: 1px solid #26364d;
+  }
+
+  .stock-row span:nth-child(n+2),
+  .data-row span:nth-child(n+2) {
+    display: inline-block;
+  }
+
+  .row-actions {
+    gap: 3px;
+    margin-top: 4px;
+  }
+
+  .row-actions button,
+  .data-row button {
+    min-height: 30px;
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+
+  .row-actions button svg,
+  .data-row button svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .link-button {
+    font-size: 11px;
+  }
+
+  .history-card {
+    padding: 8px;
+    gap: 3px;
+  }
+
+  .history-card span,
+  .history-card small {
+    font-size: 11px;
+  }
+
+  .cat-admin-layout {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .cat-panel {
+    min-height: auto;
+  }
+
+  .cat-panel-header {
+    padding: 3px 0 5px;
+    font-size: 12px;
+  }
+
+  .cat-add-form {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .cat-add-form input {
+    flex: 1;
+    min-width: 100%;
+    min-height: 34px;
+    font-size: 11px;
+    padding: 5px 6px;
+  }
+
+  .cat-add-form .primary-button {
+    min-height: 34px;
+    padding: 5px 8px;
+    font-size: 11px;
+    width: 100%;
+  }
+
+  .cat-list {
+    max-height: 250px;
+    gap: 2px;
+  }
+
+  .cat-item {
+    padding: 6px 8px;
+    border-radius: 3px;
+    flex-wrap: wrap;
+  }
+
+  .cat-item-name {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .cat-child-count {
+    font-size: 10px;
+  }
+
+  .cat-delete-btn {
+    padding: 2px;
+  }
+
+  .cat-delete-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cat-empty {
+    font-size: 11px;
+    padding: 12px 0;
+  }
+
+  .cat-move-dropdown {
+    padding: 4px;
+    gap: 2px;
+    margin-top: 3px;
+  }
+
+  .cat-move-option {
+    padding: 3px 5px;
+    font-size: 11px;
+  }
+
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .content-panel {
+    padding: 10px;
+  }
+
+  .empty-cart {
+    min-height: 80px;
+    font-size: 12px;
+  }
+
+  .message {
+    padding: 8px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+
+  .form-error {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .login-panel {
+    max-width: 100%;
+    width: 100%;
+    padding: 16px;
+    gap: 12px;
+    border-radius: 6px;
+  }
+
+  .login-panel h1 {
+    font-size: 20px;
+  }
+
+  .login-panel p {
+    font-size: 11px;
+  }
+
+  .login-panel label {
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .login-panel input {
+    min-height: 38px;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .brand-mark {
+    height: 56px;
+    width: 56px;
+  }
+
+  .login-phone {
+    opacity: 0.12;
+  }
+
+  .login-phone-left {
+    left: -20%;
+    width: min(40vw, 300px);
+  }
+
+  .login-phone-right {
+    right: -20%;
+    width: min(40vw, 300px);
+  }
+
+  .login-screen {
+    padding: 12px;
+  }
+
+  .preview-modal-overlay {
+    padding: 10px;
+  }
+
+  .preview-modal-content {
+    max-width: 100%;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .preview-modal-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .preview-modal-actions button {
+    width: 100%;
+  }
+
+  .breadcrumb-btn {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+
+  .breadcrumb-sep {
+    font-size: 14px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* SMALL PHONES: < 480px                                             */
+/* ──────────────────────────────────────────────────────────────── */
+@media (max-width: 479px) {
+  html, body, #root, #toast-root {
+    font-size: 12px;
+  }
+
+  .app-shell {
+    grid-template-rows: auto auto 1fr;
+  }
+
+  .sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .sidebar button {
+    font-size: 8px;
+    min-height: 40px;
+    padding: 3px;
+    gap: 2px;
+  }
+
+  .sidebar button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .workspace {
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .workspace > *:last-child {
+    min-height: auto;
+  }
+
+  .topbar {
+    gap: 4px;
+    flex-direction: column-reverse;
+  }
+
+  .topbar div:first-child {
+    width: 100%;
+  }
+
+  .topbar strong {
+    font-size: 15px;
+  }
+
+  .topbar span {
+    font-size: 10px;
+  }
+
+  .status-pill {
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .topbar-logout-btn,
+  .topbar-refresh-btn {
+    min-width: 34px;
+    min-height: 34px;
+  }
+
+  .topbar-logout-btn svg,
+  .topbar-refresh-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pos-layout {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .catalog {
+    padding: 6px;
+    gap: 2px;
+  }
+
+  .search-box {
+    gap: 3px;
+    padding: 0 6px;
+    min-height: 32px;
+  }
+
+  .search-box input {
+    min-height: 32px;
+    padding: 4px 5px;
+    font-size: 10px;
+  }
+
+  .search-box button {
+    min-height: 28px;
+    width: 28px;
+    padding: 2px;
+  }
+
+  .search-box button svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .product-grid {
+    grid-auto-rows: 110px;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 4px;
+  }
+
+  .product-card {
+    padding: 6px;
+    border-radius: 3px;
+  }
+
+  .product-card-top {
+    gap: 4px;
+    font-size: 10px;
+  }
+
+  .product-card strong {
+    font-size: 12px;
+  }
+
+  .product-card small {
+    font-size: 9px;
+  }
+
+  .product-icon {
+    height: 24px;
+    width: 24px;
+  }
+
+  .product-category {
+    font-size: 8px;
+  }
+
+  .category-card {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .category-icon {
+    height: 40px;
+    width: 40px;
+  }
+
+  .category-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .category-name {
+    font-size: 12px;
+  }
+
+  .cart-panel {
+    padding: 4px;
+    gap: 2px;
+    max-height: 35vh;
+    grid-template-rows: auto 1fr auto auto auto auto;
+  }
+
+  .cart-list {
+    gap: 4px;
+  }
+
+  .cart-row {
+    padding: 4px;
+    gap: 2px;
+  }
+
+  .cart-row-top {
+    gap: 4px;
+  }
+
+  .cart-row-name strong {
+    font-size: 11px;
+  }
+
+  .cart-price-line {
+    font-size: 10px;
+    gap: 2px;
+  }
+
+  .cart-row-extras {
+    grid-template-columns: 70px 1fr;
+    gap: 2px;
+  }
+
+  .cart-extra-input {
+    font-size: 9px;
+    padding: 2px 3px;
+    min-height: 28px;
+  }
+
+  .qty-controls {
+    gap: 2px;
+  }
+
+  .qty-controls button {
+    height: 22px;
+    width: 22px;
+    font-size: 9px;
+  }
+
+  .qty-controls button svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .qty-controls span {
+    min-width: 14px;
+    font-size: 10px;
+  }
+
+  .customer-grid {
+    gap: 3px;
+  }
+
+  .customer-grid label {
+    font-size: 11px;
+    gap: 2px;
+  }
+
+  .customer-grid input {
+    min-height: 34px;
+    font-size: 10px;
+    padding: 5px 6px;
+  }
+
+  .checkout-options {
+    gap: 3px;
+  }
+
+  .checkout-options select {
+    min-height: 34px;
+    font-size: 10px;
+    padding: 5px 6px;
+  }
+
+  .totals {
+    font-size: 10px;
+    gap: 2px;
+    padding-top: 6px;
+  }
+
+  .totals div {
+    font-size: 9px;
+  }
+
+  .grand-total {
+    font-size: 16px;
+  }
+
+  .primary-button,
+  .charge-button,
+  .secondary-button {
+    min-height: 36px;
+    padding: 5px 8px;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+
+  .primary-button svg,
+  .charge-button svg,
+  .secondary-button svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .pos-action-btn {
+    min-height: 28px !important;
+    padding: 3px 6px !important;
+    font-size: 9px !important;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .metric {
+    padding: 8px;
+    gap: 3px;
+  }
+
+  .metric strong {
+    font-size: 16px;
+  }
+
+  .metric span {
+    font-size: 10px;
+  }
+
+  .chart-panel {
+    padding: 8px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .form-grid input,
+  .form-grid select {
+    min-height: 34px;
+    font-size: 10px;
+    padding: 5px 6px;
+  }
+
+  .form-grid .primary-button {
+    width: 100%;
+  }
+
+  .report-controls {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .report-controls input,
+  .report-controls button {
+    width: 100%;
+    min-height: 34px;
+    font-size: 10px;
+  }
+
+  .report-controls .secondary-button {
+    width: 100%;
+  }
+
+  .inventory-table {
+    border-radius: 3px;
+    font-size: 10px;
+  }
+
+  .table-head,
+  .stock-row,
+  .data-head,
+  .data-row {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .table-head {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .row-actions {
+    gap: 2px;
+    margin-top: 2px;
+  }
+
+  .row-actions button,
+  .data-row button {
+    min-height: 28px;
+    padding: 3px 5px;
+    font-size: 9px;
+  }
+
+  .row-actions button svg,
+  .data-row button svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .history-card {
+    padding: 6px;
+    gap: 2px;
+  }
+
+  .history-card span,
+  .history-card small {
+    font-size: 10px;
+  }
+
+  .cat-admin-layout {
+    gap: 6px;
+  }
+
+  .cat-panel-header {
+    padding: 2px 0 4px;
+    font-size: 11px;
+  }
+
+  .cat-add-form {
+    gap: 2px;
+    flex-wrap: wrap;
+  }
+
+  .cat-add-form input {
+    min-width: 100%;
+    min-height: 32px;
+    font-size: 10px;
+    padding: 4px 5px;
+  }
+
+  .cat-add-form .primary-button {
+    min-height: 32px;
+    padding: 4px 6px;
+    font-size: 10px;
+    width: 100%;
+  }
+
+  .cat-list {
+    max-height: 200px;
+    gap: 2px;
+  }
+
+  .cat-item {
+    padding: 4px 6px;
+    border-radius: 2px;
+  }
+
+  .cat-item-name {
+    font-size: 11px;
+  }
+
+  .cat-child-count {
+    font-size: 9px;
+  }
+
+  .cat-delete-btn {
+    padding: 1px;
+  }
+
+  .cat-delete-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .cat-empty {
+    font-size: 10px;
+    padding: 8px 0;
+  }
+
+  .cat-move-dropdown {
+    padding: 3px;
+    gap: 1px;
+  }
+
+  .cat-move-option {
+    padding: 2px 4px;
+    font-size: 10px;
+  }
+
+  .split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .content-panel {
+    padding: 8px;
+  }
+
+  .empty-cart {
+    min-height: 70px;
+    font-size: 11px;
+  }
+
+  .message,
+  .form-error {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .login-panel {
+    max-width: 100%;
+    width: 100%;
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .login-panel h1 {
+    font-size: 18px;
+  }
+
+  .login-panel p {
+    font-size: 10px;
+  }
+
+  .login-panel label {
+    font-size: 11px;
+    gap: 3px;
+  }
+
+  .login-panel input {
+    min-height: 36px;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .brand-mark {
+    height: 52px;
+    width: 52px;
+  }
+
+  .login-phone {
+    opacity: 0.08;
+  }
+
+  .login-phone-left {
+    left: -25%;
+    width: min(35vw, 250px);
+  }
+
+  .login-phone-right {
+    right: -25%;
+    width: min(35vw, 250px);
+  }
+
+  .login-screen {
+    padding: 8px;
+  }
+
+  .preview-modal-overlay {
+    padding: 6px;
+  }
+
+  .preview-modal-content {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .preview-modal-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .preview-modal-actions button {
+    width: 100%;
+    min-height: 34px;
   }
 }
 
@@ -1679,6 +3501,65 @@ button:disabled {
 /* ═══════════════════════════════════════════════════════════════════════════
    MOBILE RESPONSIVE DESIGN (Tablets & Phones)
    ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Mobile Safe Area Support (Notches, Dynamic Island, Bottom Bar) */
+@supports (padding: max(0px)) {
+  .sidebar,
+  .workspace {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      padding-bottom: max(8px, env(safe-area-inset-bottom));
+    }
+
+    .workspace {
+      padding-top: max(16px, env(safe-area-inset-top));
+      padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* Universal Mobile Improvements */
+@media (max-width: 1024px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
+  body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  input,
+  textarea,
+  button,
+  select {
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  .app-shell,
+  .workspace {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  /* Smooth scrolling on mobile */
+  .catalog,
+  .cart-list,
+  .cat-list,
+  .product-grid,
+  .history-card {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
 
 /* Tablets (768px to 1024px) */
 @media (max-width: 1024px) {

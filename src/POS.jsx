@@ -1101,7 +1101,7 @@ function CategoriesAdmin({ reload, setMessage, isAdmin }) {
             value={parentForm.name}
             onChange={e => setParentForm({ name: e.target.value })}
           />
-          <button className="primary-button">Add</button>
+          <button type="submit" className="primary-button">Add</button>
         </form>
         <div className="cat-list">
           {parents.map(p => {
@@ -1162,7 +1162,7 @@ function CategoriesAdmin({ reload, setMessage, isAdmin }) {
                 value={childForm.name}
                 onChange={e => setChildForm({ name: e.target.value })}
               />
-              <button className="primary-button">Add</button>
+              <button type="submit" className="primary-button">Add</button>
             </form>
             <div className="cat-list">
               {children.length === 0 ? (
@@ -1795,7 +1795,7 @@ function CustomToast({ message, onClose }) {
         </div>
         <div className="iphone-toast-text">
           <span className="iphone-toast-app">Vedha Mobiles</span>
-          <span className="iphone-toast-msg">{message}</span>
+          <span className="iphone-toast-msg">{typeof message === "string" ? message : message?.text}</span>
         </div>
       </div>
     </div>,
